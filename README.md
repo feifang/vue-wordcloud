@@ -1,6 +1,11 @@
 # vue-wordcloud
 
-> A Vue.js Word Cloud component
+A Vue.js Word Cloud component based on the original [d3-cloud](https://github.com/jasondavies/d3-cloud) plugin.
+
+**What's New?**
+- Additional font scale options
+- Easy to use rotation setting
+For details please refer to [options](https://github.com/feifang/vue-wordcloud#options).
 
 ### Install
 ```

@@ -1,15 +1,29 @@
 var path = require('path')
 var webpack = require('webpack')
-
+function resolve(dir) {
+  return path.join(__dirname, '..', dir)
+}
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'build.js'
+    filename: 'word-cloud.js',
+    library: 'WordCloud',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     rules: [
+      {
+        test: /\.(js|vue)$/,
+        loader: 'eslint-loader',
+        enforce: 'pre',
+        include: [resolve('src')],
+        options: {
+          formatter: require('eslint-friendly-formatter')
+        }
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',

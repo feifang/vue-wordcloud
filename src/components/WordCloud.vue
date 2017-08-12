@@ -6,8 +6,6 @@
 import * as d3 from 'd3'
 import * as cloud from 'd3-cloud'
 import resize from 'vue-resize-directive'
-// import { throttle } from '../utils/d3-utils'
-const defaultWords = [{ 'skill': 'Cat', 'value': 26 }, { 'skill': 'fish', 'value': 19 }, { 'skill': 'things', 'value': 18 }, { 'skill': 'look', 'value': 16 }, { 'skill': 'two', 'value': 15 }]
 
 function throttle (method, context) {
   clearTimeout(method.tid)
@@ -24,10 +22,10 @@ const props = {
     type: Object,
     default: function () {
       return {
-        top: 20,
-        right: 20,
-        bottom: 30,
-        left: 40
+        top: 15,
+        right: 15,
+        bottom: 15,
+        left: 15
       }
     }
   },

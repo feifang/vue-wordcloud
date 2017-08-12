@@ -67,9 +67,7 @@ const props = {
   },
   data: {
     type: Array,
-    default: function () {
-      return defaultWords
-    }
+    required: true
   },
   nameKey: {
     type: String,

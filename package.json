@@ -1,9 +1,9 @@
 {
   "name": "vue-wordcloud",
   "description": "A Vue.js Word Cloud component",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "fei.fang <karen.feifang@gmail.com>",
-  "private": true,
+  "private": false,
   "main": "dist/word-cloud.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",

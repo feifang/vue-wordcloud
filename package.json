@@ -2,6 +2,7 @@
   "name": "vue-wordcloud",
   "description": "A Vue.js Word Cloud component",
   "version": "1.0.2",
+  "license": "MIT",
   "author": "fei.fang <karen.feifang@gmail.com>",
   "private": false,
   "main": "dist/word-cloud.js",

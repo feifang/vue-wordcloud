@@ -33,9 +33,10 @@
     "eslint-plugin-html": "2.0.0",
     "eslint-plugin-import": "2.2.0",
     "file-loader": "^0.9.0",
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "vue-loader": "^12.1.0",
     "vue-template-compiler": "^2.3.3",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack": "3.10.0",
+    "webpack-dev-server": "^3.1.10"
   }
 }

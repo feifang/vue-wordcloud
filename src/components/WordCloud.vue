@@ -228,17 +228,17 @@ export default {
 </script>
 
 
-<style lang="scss"　scope>
+<style scope>
 .wordCloud {
   display: inline-block;
   position: relative;
   width: 100%;
   height: 400px;
-  svg{
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+}
+.wordCloud svg {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 </style>

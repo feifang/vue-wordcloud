@@ -77,6 +77,10 @@ const props = {
     type: String,
     default: 'value'
   },
+  showTooltip: {
+    type: Boolean,
+    default: true
+  },
   wordClick: {
     type: Function,
     default: null
@@ -191,12 +195,16 @@ export default {
       layout.start()
     },
     draw (data) {
-      const { layout, chart, color, wordClick } = this
+      const { layout, chart, color, nameKey, valueKey, showTooltip, wordClick } = this
       // const fill = d3.scaleOrdinal(colors['scheme' + color])
       const fill = d3.scaleOrdinal(d3['scheme' + color])
       const vm = this
       const centeredChart = chart.append('g')
               .attr('transform', 'translate(' + layout.size()[0] / 2 + ',' + layout.size()[1] / 2 + ')')
+      // Define the div for the tooltip
+      const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
       const text = centeredChart.selectAll('text')
               .data(data)
            .enter().append('text')
@@ -209,8 +217,26 @@ export default {
               .duration(500)
               .attr('transform', (d) => { return 'translate(' + [d.x, d.y] + ')rotate(' + d.rotate + ')' })
               .text(d => d.text)
+      if (showTooltip) {
+        text.on("mouseover", function(d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .7)
+                tooltip.html(nameKey + ': ' + d[nameKey] + "<br/>"  + valueKey + ': ' + d[valueKey])
+            })
+            .on("mousemove", function(d) {
+                tooltip
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 40) + "px")
+            })
+            .on("mouseout", function(d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0)
+        });
+      }
       text.on('click', (d) => {
-        wordClick(d.name, d.value, vm)
+        wordClick(d[nameKey], d[valueKey], vm)
       })
     },
     update () {
@@ -240,5 +266,18 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
+}
+div.tooltip {
+    position: absolute;
+    width: 140px;
+    height: 50px;
+    padding: 8px;
+    font: 18px Arial;
+    line-height: 24px;
+    color: white;
+    background: black;
+    border: 0px;
+    border-radius: 2px;
+    pointer-events: none;
 }
 </style>

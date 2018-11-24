@@ -210,7 +210,7 @@ export default {
               .attr('transform', (d) => { return 'translate(' + [d.x, d.y] + ')rotate(' + d.rotate + ')' })
               .text(d => d.text)
       text.on('click', (d) => {
-        wordClick(d.text, vm)
+        wordClick(d.name, d.value, vm)
       })
     },
     update () {

@@ -13,6 +13,7 @@
   "dependencies": {
     "d3": "^4.10.0",
     "d3-cloud": "^1.2.4",
+    "d3-scale-chromatic": "^1.3.3",
     "vue": "^2.3.3",
     "vue-resize-directive": "^1.0.0"
   },

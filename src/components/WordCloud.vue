@@ -5,6 +5,7 @@
 <script>
 import * as d3 from 'd3'
 import * as cloud from 'd3-cloud'
+import * as d3ScaleChromatic from 'd3-scale-chromatic'
 import resize from 'vue-resize-directive'
 
 function throttle (method, context) {
@@ -62,7 +63,7 @@ const props = {
     }
   },
   color: {
-    type: String,
+    type: [String, Array], // using d3 color schemes or self defined colors
     default: 'Category20b'
   },
   data: {
@@ -157,6 +158,13 @@ export default {
       const multiplier = ((Math.abs(x1) + Math.abs(x2)) / (n - 1)) || 1
       return { a: n, b: (x1 / multiplier), c: multiplier }
     },
+    getColorScale(color) {
+      if (typeof color === 'string') { // d3 color schemes
+        return d3.scaleOrdinal(d3ScaleChromatic['scheme' + color])
+      } else {
+        return d3.scaleOrdinal(color) // self defined color list
+      }
+    },
     setFontSizeScale () {
       const { fontSize, fontScale, words, valueKey } = this
       switch (fontScale) {
@@ -196,8 +204,7 @@ export default {
     },
     draw (data) {
       const { layout, chart, color, nameKey, valueKey, showTooltip, wordClick } = this
-      // const fill = d3.scaleOrdinal(colors['scheme' + color])
-      const fill = d3.scaleOrdinal(d3['scheme' + color])
+      const fill = this.getColorScale(color)
       const vm = this
       const centeredChart = chart.append('g')
               .attr('transform', 'translate(' + layout.size()[0] / 2 + ',' + layout.size()[1] / 2 + ')')

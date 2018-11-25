@@ -64,7 +64,7 @@ const props = {
   },
   color: {
     type: [String, Array], // using d3 color schemes or self defined colors
-    default: 'Category20b'
+    default: 'Category10'
   },
   data: {
     type: Array,

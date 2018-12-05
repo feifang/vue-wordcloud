@@ -142,6 +142,7 @@ spiral|词的布局方式|'archimedian'|可选择'archimedian'或'rectangular'
 fontScale|词的大小缩放比例|'sqrt'|可选择'sqrt'，'log'或'n'
 fontSize|词的字号范围| `[10, 80]`| [minSize, maxSize]
 font|词的字体名称，对应 `font-family` 的值 |"impact"|例如，衬线字体'serif'，非衬线字体'Arial'
+fontWeight|-|"normal"|-
 color|配色集合，可配置两种类型的值：String (D3 scheme name)，或 Array（自定义的颜色列表）|'Category10'|可采用D3内置的任意 Category 配色，或自定义的颜色列表；单色可通过传入只有一个颜色的数组实现，详见 [examples](https://github.com/feifang/vue-wordcloud#examples)
 showTooltip|显示 Tooltip|true| true/false; tooltip 的样式（如宽高、颜色等）可以通过 CSS 类 `div.tooltip` 配置
 wordClick|词的点击事件的回调函数|null|函数传入三个变量，第一个是点击的词 `text`，第二个是该词对应的权重 `value`，第三个是 Vue 实例 `vm`

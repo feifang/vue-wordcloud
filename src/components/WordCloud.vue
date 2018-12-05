@@ -62,6 +62,10 @@ const props = {
       return [10, 80]
     }
   },
+  fontWeight: {
+    type: String,
+    default: 'normal'
+  },
   color: {
     type: [String, Array], // using d3 color schemes or self defined colors
     default: 'Category10'
@@ -186,7 +190,7 @@ export default {
     },
     renderChart () {
       this.setFontSizeScale()
-      const { spiral, wordPadding, fontSizeScale, font, words, nameKey, valueKey } = this
+      const { spiral, wordPadding, fontSizeScale, font, fontWeight, words, nameKey, valueKey } = this
       const { width, height } = this.size
       const { a, b, c } = this.getRotation()
       const layout = cloud()
@@ -195,6 +199,7 @@ export default {
               .fontSize(d => fontSizeScale(d[valueKey]))
               .text(d => d[nameKey])
               .font(font)
+              .fontWeight(fontWeight)
               .padding(wordPadding)
               .rotate(() => { return (~~(Math.random() * a) + b) * c })
               .spiral(spiral)

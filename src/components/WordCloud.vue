@@ -222,6 +222,7 @@ export default {
            .enter().append('text')
               .style('font-size', d => d.size + 'px')
               .style('font-family', d => d.font)
+              .style('font-weight', d => d.weight)
               .style('fill', (d, i) => fill(i))
               .attr('class', 'text')
               .attr('text-anchor', 'middle')
